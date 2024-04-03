@@ -1,4 +1,5 @@
 import { AuthPage } from "./AuthPage";
-import { CreateAccountPage } from "./CreateAccountPage/index";
+import { CreateAccountPage } from "./CreateAccountPage";
+import { AccountPage } from "./AccountPage";
 
-export { AuthPage, CreateAccountPage };
+export { AuthPage, CreateAccountPage, AccountPage };

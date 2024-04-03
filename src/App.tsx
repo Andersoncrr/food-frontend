@@ -1,10 +1,9 @@
-import { AuthPage, CreateAccountPage } from "@/components/pages";
+import { AppRoutes } from "./routes";
 
 function App() {
   return (
     <>
-      <AuthPage />
-      {/* <CreateAccountPage /> */}
+      <AppRoutes />
     </>
   );
 }
