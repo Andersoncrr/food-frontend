@@ -6,6 +6,7 @@ export const createUser = createAsyncThunk(
   "user/createUser",
   async (values: CreateCredentials) => {
     const { data } = await axios.post("http://localhost:5001/api/user", values);
+    localStorage.setItem("token", data.token);
     return data;
   }
 );

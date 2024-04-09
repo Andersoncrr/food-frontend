@@ -9,6 +9,7 @@ export const authUser = createAsyncThunk(
       "http://localhost:5001/api/user/auth",
       values
     );
+    localStorage.setItem("token", data.token);
     return data;
   }
 );
