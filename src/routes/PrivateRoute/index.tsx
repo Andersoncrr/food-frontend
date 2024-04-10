@@ -19,9 +19,13 @@ export const PrivateRoute = () => {
       ) {
         return null;
       }
-      return (
-        <Route key={route.path} path={route.path} element={route.component} />
-      );
+      if (route.items) {
+        return getPrivateRoutes(route.items);
+      } else {
+        return (
+          <Route key={route.path} path={route.path} element={route.component} />
+        );
+      }
     });
 
     return renderPrivateRoutes;

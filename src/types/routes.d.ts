@@ -5,6 +5,7 @@ type PrivateRoute = {
   name: string;
   component: ReactNode;
   permissions?: Array<"admin">;
+  items?: PrivateRoutes;
 };
 
 export type PrivateRoutes = Array<PrivateRoute>;

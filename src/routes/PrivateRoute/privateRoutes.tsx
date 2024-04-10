@@ -1,6 +1,22 @@
 import { AccountPage } from "@/components/pages";
 import { PrivateRoutes } from "@/types/routes";
 
+export const Personal: PrivateRoutes = [
+  {
+    path: "/cook",
+    name: "Cocinera",
+    component: <div>Cocinera </div>,
+    permissions: ["admin"],
+  },
+  {
+    path: "/aux",
+    name: "Auxiliar",
+    component: <div>Auxiliar </div>,
+
+    permissions: ["admin"],
+  },
+];
+
 export const privateRoutes: PrivateRoutes = [
   {
     path: "/account",
@@ -19,6 +35,7 @@ export const privateRoutes: PrivateRoutes = [
     path: "/employees",
     name: "Empleados",
     component: <div>Empleados </div>,
+    items: Personal,
     permissions: ["admin"],
   },
   {
