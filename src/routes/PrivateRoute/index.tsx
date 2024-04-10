@@ -27,5 +27,10 @@ export const PrivateRoute = () => {
     return renderPrivateRoutes;
   };
 
-  return <Routes>{getPrivateRoutes(privateRoutes)}</Routes>;
+  return (
+    <Routes>
+      {getPrivateRoutes(privateRoutes)}{" "}
+      <Route path="/*" element={<Navigate to="/account" />} />
+    </Routes>
+  );
 };
