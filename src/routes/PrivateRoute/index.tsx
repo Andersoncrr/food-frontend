@@ -56,12 +56,16 @@ export const PrivateRoute = () => {
             {
               key: "3",
               label: "nav 3",
+              children: [
+                { key: "4", label: "nav 3-1" },
+                { key: "5", label: "na.v 3-2" },
+              ],
             },
           ]}
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: "grey" }}>
+        <Header style={{ padding: 0 }}>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -70,6 +74,7 @@ export const PrivateRoute = () => {
               fontSize: "16px",
               width: 64,
               height: 64,
+              color: "white",
             }}
           />
         </Header>

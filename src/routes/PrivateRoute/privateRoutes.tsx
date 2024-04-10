@@ -12,7 +12,6 @@ export const Personal: PrivateRoutes = [
     path: "/aux",
     name: "Auxiliar",
     component: <div>Auxiliar </div>,
-
     permissions: ["admin"],
   },
 ];

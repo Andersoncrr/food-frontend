@@ -10,11 +10,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <ConfigProvider
     theme={{
       token: {},
-      components: {
-        Layout: {
-          colorBgHeader: "#009900",
-        },
-      },
     }}
   >
     <BrowserRouter>
