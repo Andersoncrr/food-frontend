@@ -1,0 +1,3 @@
+.header__container {
+  @apply w-full gap-4;
+}
