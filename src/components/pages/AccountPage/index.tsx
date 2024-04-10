@@ -1,3 +1,3 @@
 export const AccountPage = () => {
-  return <div>AccountPage</div>;
+  return <div>countPages</div>;
 };
