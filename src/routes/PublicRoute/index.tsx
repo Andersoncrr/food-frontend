@@ -21,7 +21,6 @@ export const PublicRoutes = () => {
         }}
       >
         <Avatar size={100} src={<img src={logo} />} />
-        Holaaaa
       </Header>
       <Content>
         <Routes>
