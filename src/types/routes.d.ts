@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
 type PrivateRoute = {
-  path: string;
+  path?: string;
   name: string;
-  component: ReactNode;
+  component?: ReactNode;
   permissions?: Array<"admin">;
   items?: PrivateRoutes;
 };

@@ -1,4 +1,4 @@
-import { AccountPage } from "@/components/pages";
+import { AccountPage, MenuCategories } from "@/components/pages";
 import { PrivateRoutes } from "@/types/routes";
 
 export const Personal: PrivateRoutes = [
@@ -16,6 +16,15 @@ export const Personal: PrivateRoutes = [
   },
 ];
 
+const menuRoutes: PrivateRoutes = [
+  {
+    path: "/menu-categories",
+    name: "Categorías",
+    component: <MenuCategories />,
+    permissions: ["admin"],
+  },
+];
+
 export const privateRoutes: PrivateRoutes = [
   {
     path: "/account",
@@ -23,11 +32,9 @@ export const privateRoutes: PrivateRoutes = [
     component: <AccountPage />,
     permissions: ["admin"],
   },
-
   {
-    path: "/administrator",
-    name: "Administrador",
-    component: <div>Administrador </div>,
+    name: "Menú",
+    items: menuRoutes,
     permissions: ["admin"],
   },
   {
