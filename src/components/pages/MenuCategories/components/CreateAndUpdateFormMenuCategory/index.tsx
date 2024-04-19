@@ -1,17 +1,33 @@
 import { useAppDispatch } from "@/hooks";
 import { createMenuCategoryByIdUser } from "@/store/menuCategorySlice/actions";
+import { updateMenuCategoryById } from "@/store/menuCategorySlice/actions/updateMenuCategoryById";
 import { Button, Form, Input } from "antd";
+import { useEffect } from "react";
 
 type Props = {
   onSubmit: () => void;
+  menuCategory?: any;
 };
 
-export const CreateAndUpdateFormMenuCategory = ({ onSubmit }: Props) => {
+export const CreateAndUpdateFormMenuCategory = ({
+  onSubmit,
+  menuCategory,
+}: Props) => {
   const dispatch = useAppDispatch();
   const [form] = Form.useForm();
 
+  useEffect(() => {
+    if (menuCategory) {
+      form.setFieldsValue(menuCategory);
+    }
+  }, [menuCategory]);
+
   const onFinish = async (values) => {
-    dispatch(createMenuCategoryByIdUser(values));
+    if (menuCategory) {
+      dispatch(updateMenuCategoryById({ ...values, _id: menuCategory._id }));
+    } else {
+      dispatch(createMenuCategoryByIdUser(values));
+    }
     form.resetFields();
     onSubmit();
   };
