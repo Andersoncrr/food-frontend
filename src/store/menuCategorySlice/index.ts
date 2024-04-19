@@ -4,6 +4,7 @@ import {
   getMenuCategoriesByIdUser,
 } from "./actions";
 import { toast } from "react-toastify";
+import { updateMenuCategoryById } from "./actions/updateMenuCategoryById";
 
 const initialState = {
   loading: false,
@@ -30,6 +31,19 @@ export const menuCategorySlice = createSlice({
         state.menuCategories.push(action.payload);
         state.loading = false;
         toast.success("¡Categoría del menú creada con éxito!");
+      })
+      .addCase(updateMenuCategoryById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateMenuCategoryById.fulfilled, (state, action) => {
+        const newMenuCategories = state.menuCategories.map((menuCategory) =>
+          menuCategory._id === action.payload._id
+            ? action.payload
+            : menuCategory
+        );
+        state.menuCategories = newMenuCategories;
+        state.loading = false;
+        toast.success("¡Categoría del menú actualizada con éxito!");
       });
   },
 });

@@ -2,8 +2,8 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { getMenuCategoriesByIdUser } from "@/store/menuCategorySlice/actions";
 import { Button, Flex, Modal, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
-import { COLUMNS } from "./helpers/columns";
 import { CreateAndUpdateFormMenuCategory } from "./components/CreateAndUpdateFormMenuCategory";
+import { COLUMNS } from "./helpers/columns";
 
 const { Title } = Typography;
 
