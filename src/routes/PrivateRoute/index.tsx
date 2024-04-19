@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useAppSelector } from "@/hooks";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { privateRoutes } from "./privateRoutes";
 import { PrivateRoutes } from "@/types/routes";
 import { Button, Layout, Menu } from "antd";
@@ -10,6 +16,8 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 
 export const PrivateRoute = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const defaultSelectMenu = location.pathname.replace("/administrator", "");
 
   const { token, userInfo } = useAppSelector((state) => state.user);
   const [collapsed, setCollapsed] = useState(false);
@@ -69,7 +77,7 @@ export const PrivateRoute = () => {
           onClick={(e) => navigate(`/administrator${e.key}`)}
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={[defaultSelectMenu]}
           items={getOptionsMenu(privateRoutes)}
         />
       </Sider>

@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMenuCategoriesByIdUser } from "./actions";
+import {
+  createMenuCategoryByIdUser,
+  getMenuCategoriesByIdUser,
+} from "./actions";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: false,
@@ -17,6 +21,15 @@ export const menuCategorySlice = createSlice({
       })
       .addCase(getMenuCategoriesByIdUser.fulfilled, (state, action) => {
         state.menuCategories = action.payload;
+        state.loading = false;
+      })
+      .addCase(createMenuCategoryByIdUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createMenuCategoryByIdUser.fulfilled, (state, action) => {
+        state.menuCategories.push(action.payload);
+        state.loading = false;
+        toast.success("¡Categoría del menú creada con éxito!");
       });
   },
 });
