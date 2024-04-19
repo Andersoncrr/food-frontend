@@ -1,20 +1,6 @@
 import { AccountPage, MenuCategories } from "@/components/pages";
+import { Employees } from "@/components/pages/Employees";
 import { PrivateRoutes } from "@/types/routes";
-
-export const Personal: PrivateRoutes = [
-  {
-    path: "/cook",
-    name: "Cocinera",
-    component: <div>Cocinera </div>,
-    permissions: ["admin"],
-  },
-  {
-    path: "/aux",
-    name: "Auxiliar",
-    component: <div>Auxiliar </div>,
-    permissions: ["admin"],
-  },
-];
 
 const menuRoutes: PrivateRoutes = [
   {
@@ -40,8 +26,7 @@ export const privateRoutes: PrivateRoutes = [
   {
     path: "/employees",
     name: "Empleados",
-    component: <div>Empleados </div>,
-    items: Personal,
+    component: <Employees />,
     permissions: ["admin"],
   },
   {
