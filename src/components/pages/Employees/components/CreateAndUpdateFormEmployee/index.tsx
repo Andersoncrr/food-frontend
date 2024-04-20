@@ -6,7 +6,12 @@ import {
 import { Button, Form, Input } from "antd";
 import { useEffect } from "react";
 
-export const CreateAndUpdateFormEmployee = ({ onSubmit, employee }) => {
+type Props = {
+  onSubmit: () => void;
+  employee?: any;
+};
+
+export const CreateAndUpdateFormEmployee = ({ onSubmit, employee }: Props) => {
   const dispatch = useAppDispatch();
   const [form] = Form.useForm();
 

@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import { Provider } from "react-redux";
 import { store } from "@/store";
 import { BrowserRouter } from "react-router-dom";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, App as AppAntd } from "antd";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -12,10 +12,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       token: {},
     }}
   >
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <AppAntd className="h-screen">
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </AppAntd>
   </ConfigProvider>
 );

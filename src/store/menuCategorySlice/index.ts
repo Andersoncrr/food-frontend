@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   createMenuCategoryByIdUser,
+  deleteMenuCategoryById,
   getMenuCategoriesByIdUser,
+  updateMenuCategoryById,
 } from "./actions";
 import { toast } from "react-toastify";
-import { updateMenuCategoryById } from "./actions/updateMenuCategoryById";
 
 const initialState = {
   loading: false,
@@ -44,6 +45,17 @@ export const menuCategorySlice = createSlice({
         state.menuCategories = newMenuCategories;
         state.loading = false;
         toast.success("¡Categoría del menú actualizada con éxito!");
+      })
+      .addCase(deleteMenuCategoryById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteMenuCategoryById.fulfilled, (state, action) => {
+        const newMenuCategories = state.menuCategories.filter(
+          (menuCategory) => menuCategory._id !== action.payload._id
+        );
+        state.menuCategories = newMenuCategories;
+        state.loading = false;
+        toast.success("¡Categoría del menú eliminada con éxito!");
       });
   },
 });

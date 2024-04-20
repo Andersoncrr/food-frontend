@@ -1,17 +1,29 @@
-import { DeleteOutlined, EditFilled } from "@ant-design/icons";
-import { Modal } from "antd";
+import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
+import { App, Modal } from "antd";
 import { useState } from "react";
 import { CreateAndUpdateFormEmployee } from ".";
 import { useAppDispatch } from "@/hooks";
 import { deleteEmployeeById } from "@/store/employeeSlice/actions";
 
 export const ActionsTableEmployee = ({ employee }) => {
+  const { modal } = App.useApp();
   const dispatch = useAppDispatch();
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
-      <EditFilled onClick={() => setOpenModal(true)} />
+    <div className="flex gap-2">
+      <EditTwoTone onClick={() => setOpenModal(true)} />
+      <DeleteTwoTone
+        onClick={() =>
+          modal.confirm({
+            title: "Confirmar eliminación",
+            content: "¿Estás seguro de que deseas eliminar este empleado?",
+            onOk() {
+              dispatch(deleteEmployeeById(employee._id));
+            },
+          })
+        }
+      />
       <Modal
         footer={null}
         title="Crear Empleado"
@@ -23,9 +35,6 @@ export const ActionsTableEmployee = ({ employee }) => {
           onSubmit={() => setOpenModal(false)}
         />
       </Modal>
-      <DeleteOutlined
-        onClick={() => dispatch(deleteEmployeeById(employee._id))}
-      />
     </div>
   );
 };
