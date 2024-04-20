@@ -11,22 +11,20 @@ export const ActionsTableMenuCategory = ({ menuCategory }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
-    <div>
-      <div className="flex gap-2">
-        <EditTwoTone onClick={() => setIsOpenModal(true)} />
-        <DeleteTwoTone
-          onClick={() =>
-            modal.confirm({
-              title: "Confirmar eliminación",
-              content:
-                "¿Estás seguro de que deseas eliminar esta categoría de menú?",
-              onOk() {
-                dispatch(deleteMenuCategoryById(menuCategory._id));
-              },
-            })
-          }
-        />
-      </div>
+    <div className="flex gap-2">
+      <EditTwoTone onClick={() => setIsOpenModal(true)} />
+      <DeleteTwoTone
+        onClick={() =>
+          modal.confirm({
+            title: "Confirmar eliminación",
+            content:
+              "¿Estás seguro de que deseas eliminar esta categoría de menú?",
+            onOk() {
+              dispatch(deleteMenuCategoryById(menuCategory._id));
+            },
+          })
+        }
+      />
       <Modal
         title="Editar Categoría del Menú"
         footer={null}
