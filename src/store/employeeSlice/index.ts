@@ -5,6 +5,7 @@ import {
   updateEmployeeById,
 } from "./actions";
 import { toast } from "react-toastify";
+import { deleteEmployeeById } from "./actions/deleteEmployeeById";
 
 const initialState = {
   loading: false,
@@ -42,6 +43,17 @@ export const employeesSlice = createSlice({
         state.employees = newEmployees;
         state.loading = false;
         toast.success("¡Empleado editado con éxito!");
+      })
+      .addCase(deleteEmployeeById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteEmployeeById.fulfilled, (state, action) => {
+        const newEmployees = state.employees.filter(
+          (employee) => employee._id !== action.payload._id
+        );
+        state.employees = newEmployees;
+        state.loading = false;
+        toast.success("¡Empleado eliminado con éxito!");
       });
   },
 });
