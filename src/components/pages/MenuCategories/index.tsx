@@ -15,7 +15,9 @@ export const MenuCategories = () => {
   const { menuCategories } = useAppSelector((state) => state.menuCategory);
 
   useEffect(() => {
-    dispatch(getMenuCategoriesByIdUser());
+    if (menuCategories.length === 0) {
+      dispatch(getMenuCategoriesByIdUser());
+    }
   }, []);
 
   return (

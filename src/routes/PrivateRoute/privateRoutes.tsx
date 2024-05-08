@@ -1,5 +1,8 @@
 import { AccountPage, MenuCategories } from "@/components/pages";
+import { CreateAndUpdateProductPage } from "@/components/pages/CreateAndUpdateProductPage";
 import { Employees } from "@/components/pages/Employees";
+import { Products } from "@/components/pages/Products";
+
 import { PrivateRoutes } from "@/types/routes";
 
 const menuRoutes: PrivateRoutes = [
@@ -8,6 +11,12 @@ const menuRoutes: PrivateRoutes = [
     name: "Categorías",
     component: <MenuCategories />,
     permissions: ["admin"],
+  },
+  {
+    path: "/products",
+    name: "Productos",
+    permissions: ["admin"],
+    component: <Products />,
   },
 ];
 
@@ -30,8 +39,17 @@ export const privateRoutes: PrivateRoutes = [
     permissions: ["admin"],
   },
   {
-    path: "/kitchen-staff",
-    name: "Personal de Cocina",
-    component: <div>Personal de cocina </div>,
+    path: "/create-product",
+    name: "Crear Producto",
+    component: <CreateAndUpdateProductPage />,
+    hidden: true,
+    permissions: ["admin"],
+  },
+  {
+    path: "/edit-product/:idMenuProduct",
+    name: "Editar Producto",
+    component: <CreateAndUpdateProductPage />,
+    hidden: true,
+    permissions: ["admin"],
   },
 ];
