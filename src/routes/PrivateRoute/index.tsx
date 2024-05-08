@@ -54,7 +54,8 @@ export const PrivateRoute = () => {
       if (
         !route.permissions?.some((permission) =>
           userInfo.permissions.includes(permission)
-        )
+        ) ||
+        route.hidden
       ) {
         return null;
       }

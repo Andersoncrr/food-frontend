@@ -6,6 +6,7 @@ type PrivateRoute = {
   component?: ReactNode;
   permissions?: Array<"admin">;
   items?: PrivateRoutes;
+  hidden?: Boolean;
 };
 
 export type PrivateRoutes = Array<PrivateRoute>;
