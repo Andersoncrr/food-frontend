@@ -1,7 +1,7 @@
 import { AuthPage, CreateAccountPage } from "@/components/pages";
 import { useAppSelector } from "@/hooks";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import logo from "@/assets/logo-food.png";
+import logo from "@/assets/logo.png";
 import { Avatar, Button, Layout, Row } from "antd";
 import styles from "./publicRoute.module.css";
 

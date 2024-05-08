@@ -3,15 +3,11 @@ import App from "./App.tsx";
 import { Provider } from "react-redux";
 import { store } from "@/store";
 import { BrowserRouter } from "react-router-dom";
-import { ConfigProvider, App as AppAntd } from "antd";
-import "./index.css";
+import { App as AppAntd } from "antd";
+import { ThemeProvider } from "@/providers";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ConfigProvider
-    theme={{
-      token: {},
-    }}
-  >
+  <ThemeProvider>
     <AppAntd className="h-screen">
       <BrowserRouter>
         <Provider store={store}>
@@ -19,5 +15,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </Provider>
       </BrowserRouter>
     </AppAntd>
-  </ConfigProvider>
+  </ThemeProvider>
 );

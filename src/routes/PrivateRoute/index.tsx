@@ -9,10 +9,13 @@ import {
 } from "react-router-dom";
 import { privateRoutes } from "./privateRoutes";
 import { PrivateRoutes } from "@/types/routes";
-import { Button, Layout, Menu } from "antd";
+import { Avatar, Button, Flex, Layout, Menu, Typography } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import logo from "@/assets/logo.png";
+
+const { Title } = Typography;
 
 export const PrivateRoute = () => {
   const navigate = useNavigate();
@@ -71,42 +74,79 @@ export const PrivateRoute = () => {
   };
 
   return (
-    <Layout style={{ height: "100%" }}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <Menu
-          onClick={(e) => navigate(`/administrator${e.key}`)}
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={[defaultSelectMenu]}
-          items={getOptionsMenu(privateRoutes)}
-        />
-      </Sider>
-      <Layout>
-        <Header style={{ padding: 0 }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-              color: "white",
-            }}
+    <Layout style={{ minHeight: "100vh" }}>
+      <div style={{ backgroundColor: "white" }}>
+        <Sider
+          style={{ borderBottomRightRadius: "30px", height: "100%" }}
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+        >
+          <Flex gap="middle" align="center" justify="center" className="p-4">
+            <Avatar
+              className="bg-white"
+              shape="circle"
+              size={40}
+              src={<img src={logo} />}
+            />
+            {!collapsed && (
+              <Title level={5} style={{ color: "white", margin: "0" }}>
+                Food App
+              </Title>
+            )}
+          </Flex>
+          <Menu
+            onClick={(e) => navigate(`/administrator${e.key}`)}
+            mode="inline"
+            theme="dark"
+            defaultSelectedKeys={[defaultSelectMenu]}
+            items={getOptionsMenu(privateRoutes)}
           />
-        </Header>
+        </Sider>
+      </div>
+
+      <Layout style={{ backgroundColor: "#001529" }}>
+        <div style={{ backgroundColor: "#F1F1F1" }}>
+          <Header
+            style={{
+              padding: 0,
+              borderBottomRightRadius: "30px",
+            }}
+          >
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 64,
+                height: 64,
+                color: "white",
+              }}
+            />
+          </Header>
+        </div>
         <Content
           style={{
-            margin: "24px 16px",
             padding: 24,
+            backgroundColor: "#F1F1F1",
+            borderTopLeftRadius: "30px",
           }}
         >
-          <Routes>
-            {getPrivateRoutes(privateRoutes)}
-            <Route path="/*" element={<Navigate to="/account" />} />
-          </Routes>
+          <div
+            style={{
+              borderTopLeftRadius: "15px",
+              borderTopRightRadius: "15px",
+              overflow: "hidden",
+            }}
+          >
+            <Routes>
+              {getPrivateRoutes(privateRoutes)}
+              <Route path="/*" element={<Navigate to="/account" />} />
+            </Routes>
+          </div>
         </Content>
-        <Footer>
+        <Footer style={{ backgroundColor: "white" }}>
           Food App @2024 Created by Anderson Cruz and Yicel Gutierrez
         </Footer>
       </Layout>
