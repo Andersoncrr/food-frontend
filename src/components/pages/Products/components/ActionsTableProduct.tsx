@@ -3,6 +3,7 @@ import { deleteMenuProductById } from "@/store/ProductsSlice/actions/deleteMenuP
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import { App } from "antd";
 import { useNavigate } from "react-router-dom";
+import { StyledContainerActions } from "../styles/actionsTableProductStyles";
 
 export const ActionsTableProduct = ({ product }) => {
   const { modal } = App.useApp();
@@ -10,7 +11,7 @@ export const ActionsTableProduct = ({ product }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex gap-2">
+    <StyledContainerActions>
       <EditTwoTone
         onClick={() => navigate(`/administrator/edit-product/${product._id}`)}
       />
@@ -25,6 +26,6 @@ export const ActionsTableProduct = ({ product }) => {
           })
         }
       />
-    </div>
+    </StyledContainerActions>
   );
 };

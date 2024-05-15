@@ -1,11 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { getMenuCategoriesByIdUser } from "@/store/menuCategorySlice/actions";
-import { Button, Flex, Modal, Table, Typography } from "antd";
+import { Button, Card, Modal, Table } from "antd";
 import { useEffect, useState } from "react";
 import { CreateAndUpdateFormMenuCategory } from "./components/CreateAndUpdateFormMenuCategory";
 import { COLUMNS } from "./helpers/columns";
-
-const { Title } = Typography;
 
 export const MenuCategories = () => {
   const dispatch = useAppDispatch();
@@ -21,20 +19,19 @@ export const MenuCategories = () => {
   }, []);
 
   return (
-    <div>
-      <Table
-        dataSource={menuCategories}
-        columns={COLUMNS}
-        rowKey="_id"
-        title={() => (
-          <Flex justify="space-between">
-            <Title level={3}>Categorías del Menú</Title>
-            <Button onClick={() => setIsOpenModal(true)} shape="round">
-              Crear Categoría
-            </Button>
-          </Flex>
-        )}
-      />
+    <Card
+      title="Categorías del Menú"
+      extra={
+        <Button
+          onClick={() => setIsOpenModal(true)}
+          shape="round"
+          type="primary"
+        >
+          Crear Categoría
+        </Button>
+      }
+    >
+      <Table dataSource={menuCategories} columns={COLUMNS} rowKey="_id" />
       <Modal
         title="Crear Categoría del Menú"
         footer={null}
@@ -45,6 +42,6 @@ export const MenuCategories = () => {
           onSubmit={() => setIsOpenModal(false)}
         />
       </Modal>
-    </div>
+    </Card>
   );
 };

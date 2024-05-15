@@ -60,7 +60,7 @@ export const CreateAndUpdateFormMenuCategory = ({
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button shape="round" htmlType="submit">
+          <Button type="primary" shape="round" htmlType="submit">
             Submit
           </Button>
         </Form.Item>

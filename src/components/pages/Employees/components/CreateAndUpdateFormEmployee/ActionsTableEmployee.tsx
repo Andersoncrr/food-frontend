@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CreateAndUpdateFormEmployee } from ".";
 import { useAppDispatch } from "@/hooks";
 import { deleteEmployeeById } from "@/store/employeeSlice/actions";
+import { StyledContainerActions } from "../../styles/actionsTableEmployeeStyles";
 
 export const ActionsTableEmployee = ({ employee }) => {
   const { modal } = App.useApp();
@@ -11,7 +12,7 @@ export const ActionsTableEmployee = ({ employee }) => {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div className="flex gap-2">
+    <StyledContainerActions>
       <EditTwoTone onClick={() => setOpenModal(true)} />
       <DeleteTwoTone
         onClick={() =>
@@ -35,6 +36,6 @@ export const ActionsTableEmployee = ({ employee }) => {
           onSubmit={() => setOpenModal(false)}
         />
       </Modal>
-    </div>
+    </StyledContainerActions>
   );
 };
