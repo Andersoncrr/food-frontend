@@ -86,7 +86,7 @@ export const AccountPage = () => {
           </Col>
         </Row>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" shape="round" htmlType="submit">
             Submit
           </Button>
         </Form.Item>

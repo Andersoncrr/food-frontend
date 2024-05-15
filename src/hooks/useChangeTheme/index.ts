@@ -3,7 +3,7 @@ import { flushSync } from "react-dom";
 
 export const useChangeTheme = () => {
   const [theme, setTheme] = useState<"light-theme" | "dark-theme">(
-    "dark-theme"
+    "light-theme"
   );
   const themeToggleButtonRef = useRef<HTMLDivElement>(null);
 

@@ -1,8 +1,13 @@
 import { createGlobalStyle, css } from "styled-components";
 
+/* body {
+    background-color: ${theme.bg[100]};
+    color: ${theme.text[100]};
+  } */
+
 const GlobalStyle = createGlobalStyle`
 
-${({ theme }) => css`
+${() => css`
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none;
@@ -28,24 +33,24 @@ ${({ theme }) => css`
     font-family: "Poppins", sans-serif;
   }
 
+  html {
+    font-size: 1.1rem;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  body {
+    height: 100%;
+  }
+
   #root {
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
     position: relative;
-  }
-
-  html {
-    font-size: 1.1rem;
-    scroll-behavior: smooth;
-    overflow-y: auto;
-  }
-
-  body {
-    background-color: ${theme.bg[100]};
-    color: ${theme.text[100]};
+    height: 100%;
   }
 
   body::-webkit-scrollbar {
@@ -59,6 +64,15 @@ ${({ theme }) => css`
   body::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: #383838;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 !important;
   }
 `}
 `;

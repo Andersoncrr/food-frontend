@@ -6,29 +6,13 @@ export interface Theme {
     200: string;
     300: string;
   };
-  accent: {
+  secondary: {
     100: string;
     200: string;
+    300: string;
   };
   text: {
     100: string;
-    200: string;
-    300: string;
-  };
-  bg: {
-    100: string;
-    200: string;
-    300: string;
-  };
-  error: {
-    100: string;
-    200: string;
-    300: string;
-  };
-  success: {
-    100: string;
-    200: string;
-    300: string;
   };
 }
 
