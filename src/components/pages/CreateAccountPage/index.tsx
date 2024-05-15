@@ -1,7 +1,8 @@
 import { useAppDispatch } from "@/hooks";
 import { createUser } from "@/store/userSlice/actions";
 import { CreateCredentials } from "@/types/user";
-import { Button, Card, Form, Input, Row } from "antd";
+import { Button, Form, Input } from "antd";
+import { StyledCard, StyledRow } from "./styles/createAccountPageStyles";
 
 export const CreateAccountPage = () => {
   const dispatch = useAppDispatch();
@@ -11,8 +12,8 @@ export const CreateAccountPage = () => {
   };
 
   return (
-    <Row justify="center" align="middle" className="h-full">
-      <Card className="w-96">
+    <StyledRow justify="center" align="middle">
+      <StyledCard title="Crear Cuenta">
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item
             label="Nombre"
@@ -56,7 +57,7 @@ export const CreateAccountPage = () => {
             </Button>
           </Form.Item>
         </Form>
-      </Card>
-    </Row>
+      </StyledCard>
+    </StyledRow>
   );
 };

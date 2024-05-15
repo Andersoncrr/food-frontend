@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CreateAndUpdateFormMenuCategory } from "../CreateAndUpdateFormMenuCategory";
 import { useAppDispatch } from "@/hooks";
 import { deleteMenuCategoryById } from "@/store/menuCategorySlice/actions/deleteMenuCategoryById";
+import { StyledContainerActions } from "../../styles/actionsTableMenuCategoryStyles";
 
 export const ActionsTableMenuCategory = ({ menuCategory }) => {
   const { modal } = App.useApp();
@@ -11,7 +12,7 @@ export const ActionsTableMenuCategory = ({ menuCategory }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
-    <div className="flex gap-2">
+    <StyledContainerActions>
       <EditTwoTone onClick={() => setIsOpenModal(true)} />
       <DeleteTwoTone
         onClick={() =>
@@ -36,6 +37,6 @@ export const ActionsTableMenuCategory = ({ menuCategory }) => {
           menuCategory={menuCategory}
         />
       </Modal>
-    </div>
+    </StyledContainerActions>
   );
 };

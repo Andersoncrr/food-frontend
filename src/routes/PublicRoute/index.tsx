@@ -1,11 +1,15 @@
 import { AuthPage, CreateAccountPage } from "@/components/pages";
 import { useAppSelector } from "@/hooks";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import logo from "@/assets/logo-food.png";
-import { Avatar, Button, Layout, Row } from "antd";
-import styles from "./publicRoute.module.css";
+import logo from "@/assets/logo.png";
+import { Avatar, Button, Layout } from "antd";
+import {
+  StyledHeader,
+  StyledLayout,
+  StyledRow,
+} from "./styles/publicRoutesStyles";
 
-const { Header, Footer, Content } = Layout;
+const { Footer, Content } = Layout;
 
 export const PublicRoutes = () => {
   const navigate = useNavigate();
@@ -16,15 +20,10 @@ export const PublicRoutes = () => {
   }
 
   return (
-    <Layout style={{ height: "100%" }}>
-      <Header
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Avatar size={100} src={<img src={logo} />} />
-        <Row className={styles.header__container} justify="end">
+    <StyledLayout>
+      <StyledHeader>
+        <Avatar size={45} src={<img src={logo} />} />
+        <StyledRow justify="end">
           <Button
             style={{ color: "white" }}
             type="text"
@@ -39,8 +38,8 @@ export const PublicRoutes = () => {
           >
             Crear Cuenta
           </Button>
-        </Row>
-      </Header>
+        </StyledRow>
+      </StyledHeader>
       <Content>
         <Routes>
           <Route path="/auth" element={<AuthPage />} />
@@ -51,6 +50,6 @@ export const PublicRoutes = () => {
       <Footer>
         Food App ©{new Date().getFullYear()} Created by Anderson and Yicel
       </Footer>
-    </Layout>
+    </StyledLayout>
   );
 };

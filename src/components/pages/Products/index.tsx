@@ -22,7 +22,11 @@ export const Products = () => {
       <Card
         title="Productos"
         extra={
-          <Button onClick={() => navigate("/administrator/create-product")}>
+          <Button
+            type="primary"
+            shape="round"
+            onClick={() => navigate("/administrator/create-product")}
+          >
             Crear Nuevo Producto
           </Button>
         }

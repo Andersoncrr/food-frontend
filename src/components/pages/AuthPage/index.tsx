@@ -1,7 +1,8 @@
 import { useAppDispatch } from "@/hooks";
 import { authUser } from "@/store/userSlice/actions";
 import { AuthCredentials } from "@/types/user";
-import { Button, Card, Form, Input, Row } from "antd";
+import { Button, Form, Input } from "antd";
+import { StyledCard, StyledRow } from "./styles/authPageStyles";
 
 export const AuthPage = () => {
   const dispatch = useAppDispatch();
@@ -11,8 +12,8 @@ export const AuthPage = () => {
   };
 
   return (
-    <Row justify="center" align="middle" className="h-full">
-      <Card className="w-96">
+    <StyledRow justify="center" align="middle">
+      <StyledCard title="Iniciar Sesión">
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item
             label="Email"
@@ -44,7 +45,7 @@ export const AuthPage = () => {
             </Button>
           </Form.Item>
         </Form>
-      </Card>
-    </Row>
+      </StyledCard>
+    </StyledRow>
   );
 };

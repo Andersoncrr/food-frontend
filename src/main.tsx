@@ -3,21 +3,17 @@ import App from "./App.tsx";
 import { Provider } from "react-redux";
 import { store } from "@/store";
 import { BrowserRouter } from "react-router-dom";
-import { ConfigProvider, App as AppAntd } from "antd";
-import "./index.css";
+import { ThemeProvider } from "@/providers";
+import { StyledAppAntd } from "./mainStyles.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ConfigProvider
-    theme={{
-      token: {},
-    }}
-  >
-    <AppAntd className="h-screen">
+  <ThemeProvider>
+    <StyledAppAntd>
       <BrowserRouter>
         <Provider store={store}>
           <App />
         </Provider>
       </BrowserRouter>
-    </AppAntd>
-  </ConfigProvider>
+    </StyledAppAntd>
+  </ThemeProvider>
 );
