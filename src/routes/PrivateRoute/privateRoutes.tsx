@@ -1,4 +1,4 @@
-import { AccountPage, MenuCategories } from "@/components/pages";
+import { AccountPage, MenuCategories, TablePage } from "@/components/pages";
 import { CreateAndUpdateProductPage } from "@/components/pages/CreateAndUpdateProductPage";
 import { Employees } from "@/components/pages/Employees";
 import { Products } from "@/components/pages/Products";
@@ -50,6 +50,12 @@ export const privateRoutes: PrivateRoutes = [
     name: "Editar Producto",
     component: <CreateAndUpdateProductPage />,
     hidden: true,
+    permissions: ["admin"],
+  },
+  {
+    path: "/tables",
+    name: "Mesas",
+    component: <TablePage />,
     permissions: ["admin"],
   },
 ];

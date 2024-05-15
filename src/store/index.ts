@@ -3,6 +3,7 @@ import { userSlice } from "./userSlice";
 import { menuCategorySlice } from "./menuCategorySlice";
 import { employeesSlice } from "./employeeSlice";
 import { productsSlice } from "./ProductsSlice";
+import { tablesSlice } from "./TableSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     menuCategory: menuCategorySlice.reducer,
     employee: employeesSlice.reducer,
     product: productsSlice.reducer,
+    table: tablesSlice.reducer,
   },
 });
