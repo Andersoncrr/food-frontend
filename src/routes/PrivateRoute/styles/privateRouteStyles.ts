@@ -39,7 +39,7 @@ export const StyledContainerHeader = styled.div`
 
 export const StyledHeader = styled(Header)`
   ${({ theme }) => css`
-    padding: 0;
+    padding: 0 15px 0 0;
     border-bottom-right-radius: 30px;
     background-color: ${theme.secondary[100]};
   `}
