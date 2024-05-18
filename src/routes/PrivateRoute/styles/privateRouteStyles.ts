@@ -55,14 +55,8 @@ export const StyledButtonCollapsed = styled(Button)`
 
 export const StyledContentContainer = styled(Content)`
   ${({ theme }) => css`
-    padding: 24px;
     background-color: ${theme.secondary[200]};
     border-top-left-radius: 30px;
+    padding: 24px;
   `}
-`;
-
-export const StyledContainer = styled.div`
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  overflow: hidden;
 `;

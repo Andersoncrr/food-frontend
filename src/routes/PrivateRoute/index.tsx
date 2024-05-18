@@ -15,7 +15,6 @@ import logo from "@/assets/logo.png";
 import { useTheme } from "styled-components";
 import {
   StyledButtonCollapsed,
-  StyledContainer,
   StyledContainerHeader,
   StyledContainerLogo,
   StyledContainerSider,
@@ -116,12 +115,10 @@ export const PrivateRoute = () => {
           </StyledHeader>
         </StyledContainerHeader>
         <StyledContentContainer>
-          <StyledContainer>
-            <Routes>
-              {getPrivateRoutes(privateRoutes)}
-              <Route path="/*" element={<Navigate to="/account" />} />
-            </Routes>
-          </StyledContainer>
+          <Routes>
+            {getPrivateRoutes(privateRoutes)}
+            <Route path="/*" element={<Navigate to="/account" />} />
+          </Routes>
         </StyledContentContainer>
         <Footer style={{ backgroundColor: theme.secondary[200] }}>
           Food App @2024 Created by Anderson Cruz and Yicel Gutierrez
