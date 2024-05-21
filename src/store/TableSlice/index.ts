@@ -3,6 +3,7 @@ import {
   updateTableById,
   createTableByIdUser,
   getTablesByIdUser,
+  deleteTableById,
 } from "./actions";
 
 const initialState = {
@@ -36,6 +37,16 @@ export const tablesSlice = createSlice({
       .addCase(updateTableById.fulfilled, (state, action) => {
         const newTables = state.tables.map((table) =>
           table._id === action.payload._id ? action.payload : table
+        );
+        state.tables = newTables;
+        state.loading = false;
+      })
+      .addCase(deleteTableById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteTableById.fulfilled, (state, action) => {
+        const newTables = state.tables.filter(
+          (table) => table._id !== action.payload._id
         );
         state.tables = newTables;
         state.loading = false;

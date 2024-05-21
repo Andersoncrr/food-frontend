@@ -3,9 +3,12 @@ import { Card, Dropdown, Image, Modal, Tooltip } from "antd";
 import tableIcon from "@/assets/icons/table.png";
 import { CreateAndUpdateFormTable } from "../CreateAndUpdateFormTable";
 import { useState } from "react";
+import { useAppDispatch } from "@/hooks";
+import { deleteTableById } from "@/store/TableSlice/actions";
 
 export const CardTable = ({ table }) => {
   const [openModal, setOpenModal] = useState(false);
+  const dispatch = useAppDispatch();
 
   return (
     <div>
@@ -20,7 +23,11 @@ export const CardTable = ({ table }) => {
                   label: "Editar",
                   onClick: () => setOpenModal(true),
                 },
-                { key: "2", label: "Eliminar" },
+                {
+                  key: "2",
+                  label: "Eliminar",
+                  onClick: () => dispatch(deleteTableById(table._id)),
+                },
               ],
             }}
           >
