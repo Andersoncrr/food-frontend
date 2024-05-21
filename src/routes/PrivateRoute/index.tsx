@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import {
   Navigate,
   Route,
@@ -9,8 +9,12 @@ import {
 } from "react-router-dom";
 import { privateRoutes } from "./privateRoutes";
 import { PrivateRoutes } from "@/types/routes";
-import { Avatar, Layout, Menu, Typography } from "antd";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Avatar, Button, Dropdown, Flex, Layout, Menu, Typography } from "antd";
+import {
+  LogoutOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from "@ant-design/icons";
 import logo from "@/assets/logo.png";
 import { useTheme } from "styled-components";
 import {
@@ -24,13 +28,15 @@ import {
   StyledLayoutContainerContent,
   StyledSider,
 } from "./styles/privateRouteStyles";
+import { resetUser } from "@/store/userSlice";
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 const { Footer } = Layout;
 
 export const PrivateRoute = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useAppDispatch();
   const defaultSelectMenu = location.pathname.replace("/administrator", "");
 
   const { token, userInfo } = useAppSelector((state) => state.user);
@@ -86,6 +92,11 @@ export const PrivateRoute = () => {
     return optionsMenu;
   };
 
+  const logout = () => {
+    localStorage.clear();
+    dispatch(resetUser());
+  };
+
   return (
     <StyledLayoutContainer>
       <StyledContainerSider>
@@ -107,11 +118,39 @@ export const PrivateRoute = () => {
       <StyledLayoutContainerContent>
         <StyledContainerHeader>
           <StyledHeader>
-            <StyledButtonCollapsed
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-            />
+            <Flex
+              style={{ height: "100%" }}
+              align="center"
+              justify="space-between"
+            >
+              <StyledButtonCollapsed
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+              />
+              <Dropdown
+                menu={{
+                  items: [
+                    {
+                      key: "1",
+                      label: "Cerrar Sesión",
+                      icon: <LogoutOutlined />,
+                      onClick: logout,
+                    },
+                  ],
+                }}
+              >
+                <Button type="link">
+                  <Flex gap={8} align="center">
+                    <Paragraph>{`${userInfo.name} ${userInfo.lastName}`}</Paragraph>
+                    <Avatar
+                      style={{ backgroundColor: theme.primary[100] }}
+                      src="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small_2x/happy-young-cute-illustration-face-profile-png.png"
+                    />
+                  </Flex>
+                </Button>
+              </Dropdown>
+            </Flex>
           </StyledHeader>
         </StyledContainerHeader>
         <StyledContentContainer>

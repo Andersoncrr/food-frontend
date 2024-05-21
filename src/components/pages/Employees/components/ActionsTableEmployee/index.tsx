@@ -1,10 +1,11 @@
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import { App, Modal } from "antd";
 import { useState } from "react";
-import { CreateAndUpdateFormEmployee } from ".";
+
 import { useAppDispatch } from "@/hooks";
 import { deleteEmployeeById } from "@/store/employeeSlice/actions";
 import { StyledContainerActions } from "../../styles/actionsTableEmployeeStyles";
+import { CreateAndUpdateFormEmployee } from "../CreateAndUpdateFormEmployee";
 
 export const ActionsTableEmployee = ({ employee }) => {
   const { modal } = App.useApp();

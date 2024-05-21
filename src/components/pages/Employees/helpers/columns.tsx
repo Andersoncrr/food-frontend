@@ -1,4 +1,4 @@
-import { ActionsTableEmployee } from "../components/CreateAndUpdateFormEmployee/ActionsTableEmployee";
+import { ActionsTableEmployee } from "../components/ActionsTableEmployee";
 
 export const COLUMNS = [
   {

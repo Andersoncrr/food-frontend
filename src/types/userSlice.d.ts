@@ -1,6 +1,7 @@
 export type UserInfo = {
   _id: string;
   name: string;
+  lastName?: string;
   email: string;
   permissions: Array<"admin">;
 };
