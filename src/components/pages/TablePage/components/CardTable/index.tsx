@@ -5,6 +5,7 @@ import { CreateAndUpdateFormTable } from "../CreateAndUpdateFormTable";
 import { useState } from "react";
 import { useAppDispatch } from "@/hooks";
 import { deleteTableById } from "@/store/TableSlice/actions";
+import Typography from "antd/es/typography/Typography";
 
 export const CardTable = ({ table }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -31,13 +32,13 @@ export const CardTable = ({ table }) => {
               ],
             }}
           >
-            <MoreOutlined />
+            <MoreOutlined style={{ cursor: "pointer" }} />
           </Dropdown>
         }
       >
         <Image preview={false} width={100} src={tableIcon} />
         <Tooltip title="Sillas">
-          <p>Sillas:{table.capacity}</p>
+          <Typography>Sillas:{table.capacity}</Typography>
         </Tooltip>
       </Card>
       <Modal
