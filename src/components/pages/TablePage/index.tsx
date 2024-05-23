@@ -7,6 +7,7 @@ import Modal from "antd/es/modal/Modal";
 
 import { CardTable } from "./components/CardTable";
 import { CreateAndUpdateFormTable } from "./components/CreateAndUpdateFormTable";
+import { Rnd } from "react-rnd";
 
 const { Title } = Typography;
 
@@ -28,9 +29,11 @@ export const TablePage = () => {
           Agregar Mesa
         </Button>
       </Flex>
-      <StyledFlexContainer gap="middle">
+      <StyledFlexContainer wrap="wrap" gap="20px">
         {tables.map((table, i) => (
-          <CardTable key={i} table={table} />
+          <Rnd>
+            <CardTable key={i} table={table} />
+          </Rnd>
         ))}
       </StyledFlexContainer>
       <Modal
