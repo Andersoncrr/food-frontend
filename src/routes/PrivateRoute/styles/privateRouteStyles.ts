@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 const { Sider, Header, Content } = Layout;
 
 export const StyledLayoutContainer = styled(Layout)`
-  min-height: 100%;
+  min-height: 100vh;
 `;
 
 export const StyledContainerSider = styled.div`
