@@ -50,6 +50,7 @@ export const PrivateRoute = () => {
   const getPrivateRoutes = (privateRoutes: PrivateRoutes) => {
     const renderPrivateRoutes = privateRoutes.map((route) => {
       if (
+        route.permissions &&
         !route.permissions?.some((permission) =>
           userInfo.permissions.includes(permission)
         )
@@ -70,9 +71,10 @@ export const PrivateRoute = () => {
   const getOptionsMenu = (privateRoutes: PrivateRoutes) => {
     const optionsMenu = privateRoutes.map((route) => {
       if (
-        !route.permissions?.some((permission) =>
-          userInfo.permissions.includes(permission)
-        ) ||
+        (route.permissions &&
+          !route.permissions?.some((permission) =>
+            userInfo.permissions.includes(permission)
+          )) ||
         route.hidden
       ) {
         return null;

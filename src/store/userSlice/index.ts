@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { authUser, createUser, updateUserById } from "./actions";
+import { authEmployee, authUser, createUser, updateUserById } from "./actions";
 import { jwtDecode } from "jwt-decode";
 import { InitialState, UserInfo } from "@/types/userSlice";
 import { toast } from "react-toastify";
@@ -27,6 +27,15 @@ export const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(authUser.fulfilled, (state, action) => {
+        const user: UserInfo = jwtDecode(action.payload.token);
+        state.userInfo = user;
+        state.token = action.payload.token;
+        state.loading = false;
+      })
+      .addCase(authEmployee.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(authEmployee.fulfilled, (state, action) => {
         const user: UserInfo = jwtDecode(action.payload.token);
         state.userInfo = user;
         state.token = action.payload.token;

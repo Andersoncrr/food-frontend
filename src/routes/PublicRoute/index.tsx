@@ -1,4 +1,8 @@
-import { AuthPage, CreateAccountPage } from "@/components/pages";
+import {
+  AuthEmployeePage,
+  AuthPage,
+  CreateAccountPage,
+} from "@/components/pages";
 import { useAppSelector } from "@/hooks";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
@@ -44,6 +48,7 @@ export const PublicRoutes = () => {
         <Routes>
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/create-account" element={<CreateAccountPage />} />
+          <Route path="/auth-employee" element={<AuthEmployeePage />} />
           <Route path="/*" element={<Navigate to="/auth" />} />
         </Routes>
       </Content>

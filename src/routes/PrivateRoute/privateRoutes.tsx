@@ -10,12 +10,12 @@ const menuRoutes: PrivateRoutes = [
     path: "/menu-categories",
     name: "Categorías",
     component: <MenuCategories />,
-    permissions: ["admin"],
+    permissions: ["admin", "category"],
   },
   {
     path: "/products",
     name: "Productos",
-    permissions: ["admin"],
+    permissions: ["admin", "products"],
     component: <Products />,
   },
 ];
@@ -25,12 +25,11 @@ export const privateRoutes: PrivateRoutes = [
     path: "/account",
     name: "Cuenta",
     component: <AccountPage />,
-    permissions: ["admin"],
   },
   {
     name: "Menú",
     items: menuRoutes,
-    permissions: ["admin"],
+    permissions: ["admin", "category", "products"],
   },
   {
     path: "/employees",
