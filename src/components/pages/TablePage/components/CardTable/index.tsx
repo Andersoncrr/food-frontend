@@ -7,7 +7,8 @@ import { useAppDispatch } from "@/hooks";
 import { deleteTableById } from "@/store/TableSlice/actions";
 import Typography from "antd/es/typography/Typography";
 
-export const CardTable = ({ table }) => {
+export const CardTable = ({ data }) => {
+  const { table } = data;
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useAppDispatch();
 
