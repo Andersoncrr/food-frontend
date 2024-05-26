@@ -16,7 +16,10 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    resetUser: () => initialState,
+    resetUser: (state) => {
+      state.token = null;
+      state.userInfo = {} as UserInfo;
+    },
   },
   extraReducers(builder) {
     builder
