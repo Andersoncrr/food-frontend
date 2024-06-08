@@ -23,6 +23,7 @@ export const PrivateRoute = () => {
   const getPrivateRoutes = (privateRoutes: PrivateRoutes) => {
     const renderPrivateRoutes = privateRoutes.map((route) => {
       if (
+        route.permissions &&
         !route.permissions?.some((permission) =>
           userInfo.permissions.includes(permission)
         )

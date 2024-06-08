@@ -1,4 +1,5 @@
 import { AccountPage, MenuCategories, TablePage } from "@/components/pages";
+import { BusinessHoursPage } from "@/components/pages/BusinessHoursPage";
 import { CreateAndUpdateProductPage } from "@/components/pages/CreateAndUpdateProductPage";
 import { Employees } from "@/components/pages/Employees";
 import { Products } from "@/components/pages/Products";
@@ -10,13 +11,21 @@ const menuRoutes: PrivateRoutes = [
     path: "/menu-categories",
     name: "Categorías",
     component: <MenuCategories />,
-    permissions: ["admin"],
+    permissions: ["admin", "category"],
   },
   {
     path: "/products",
     name: "Productos",
-    permissions: ["admin"],
+    permissions: ["admin", "products"],
     component: <Products />,
+  },
+];
+const configurationRoutes: PrivateRoutes = [
+  {
+    path: "/business-hours",
+    name: "Horario comercial",
+    component: <BusinessHoursPage />,
+    permissions: ["admin"],
   },
 ];
 
@@ -25,12 +34,11 @@ export const privateRoutes: PrivateRoutes = [
     path: "/account",
     name: "Cuenta",
     component: <AccountPage />,
-    permissions: ["admin"],
   },
   {
     name: "Menú",
     items: menuRoutes,
-    permissions: ["admin"],
+    permissions: ["admin", "category", "products"],
   },
   {
     path: "/employees",
@@ -56,6 +64,11 @@ export const privateRoutes: PrivateRoutes = [
     path: "/tables",
     name: "Mesas",
     component: <TablePage />,
+    permissions: ["admin"],
+  },
+  {
+    name: "Configuración",
+    items: configurationRoutes,
     permissions: ["admin"],
   },
 ];

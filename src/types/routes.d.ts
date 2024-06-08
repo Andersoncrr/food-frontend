@@ -4,7 +4,7 @@ type PrivateRoute = {
   path?: string;
   name: string;
   component?: ReactNode;
-  permissions?: Array<"admin">;
+  permissions?: Array<"admin" | "category" | "products">;
   items?: PrivateRoutes;
   hidden?: Boolean;
 };
