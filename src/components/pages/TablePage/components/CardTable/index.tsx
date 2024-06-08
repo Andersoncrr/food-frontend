@@ -1,5 +1,5 @@
 import { MoreOutlined } from "@ant-design/icons";
-import { Card, Dropdown, Image, Modal, Tooltip } from "antd";
+import { App, Card, Dropdown, Image, Modal, Tooltip } from "antd";
 import tableIcon from "@/assets/icons/table.png";
 import { CreateAndUpdateFormTable } from "../CreateAndUpdateFormTable";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import { deleteTableById } from "@/store/TableSlice/actions";
 import Typography from "antd/es/typography/Typography";
 
 export const CardTable = ({ data }) => {
+  const { modal } = App.useApp();
   const { table } = data;
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useAppDispatch();
@@ -28,7 +29,16 @@ export const CardTable = ({ data }) => {
                 {
                   key: "2",
                   label: "Eliminar",
-                  onClick: () => dispatch(deleteTableById(table._id)),
+
+                  onClick: () =>
+                    modal.confirm({
+                      title: "Confirmar eliminación",
+                      content:
+                        "¿Estás seguro de que deseas eliminar esta mesa?",
+                      onOk() {
+                        dispatch(deleteTableById(table._id));
+                      },
+                    }),
                 },
               ],
             }}

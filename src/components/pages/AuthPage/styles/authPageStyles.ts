@@ -7,4 +7,5 @@ export const StyledCard = styled(Card)`
 
 export const StyledRow = styled(Row)`
   height: 100%;
+  background-color: "red";
 `;

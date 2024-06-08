@@ -1,21 +1,27 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { resetProduct } from "@/store/ProductsSlice";
-import { createProductByIdUser } from "@/store/ProductsSlice/actions/createMenuProductByIdUser";
-import { getMenuProductById } from "@/store/ProductsSlice/actions/getMenuProductById";
-import { updateMenuProductById } from "@/store/ProductsSlice/actions/updateMenuProductById";
+import { getMenuProductById } from "@/store/ProductsSlice/actions";
 import { getMenuCategoriesByIdUser } from "@/store/menuCategorySlice/actions";
-import { Button, Card, Col, Form, Input, Row, Select } from "antd";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router-dom";
+import { DetailsProduct } from "./components/DetailsProduct";
+import { StyledSteps } from "./styles/createAndUpdateProductPageStyles";
+import { ImagesProduct } from "./components/ImagesProduct";
+import { ComplementsProduct } from "./components/ComplementsProduct";
 
 export const CreateAndUpdateProductPage = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { idMenuProduct } = useParams();
-  const [form] = Form.useForm();
-
+  const { pathname } = useLocation();
+  const match = pathname.match(/\/step-(\d+)/);
+  const stepNumber = match ? Number(match[1]) - 1 : 0;
   const { menuCategories } = useAppSelector((state) => state.menuCategory);
-  const { product } = useAppSelector((state) => state.product);
 
   useEffect(() => {
     if (menuCategories.length === 0) {
@@ -30,96 +36,32 @@ export const CreateAndUpdateProductPage = () => {
       dispatch(resetProduct());
     };
   }, []);
-  useEffect(() => {
-    if (product) {
-      form.setFieldsValue(product);
-    }
-  }, [product]);
-
-  const categoryOptions = menuCategories.map((option) => ({
-    value: option._id,
-    label: option.name,
-  }));
-
-  const onFinish = (values) => {
-    if (idMenuProduct) {
-      dispatch(updateMenuProductById({ _id: idMenuProduct, ...values }));
-    } else {
-      dispatch(createProductByIdUser(values));
-    }
-    navigate("/administrator/products");
-  };
 
   return (
-    <Card title="Crear Nuevo Producto">
-      <Form form={form} onFinish={onFinish} layout="vertical">
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item
-              label="Nombre del Producto"
-              name="name"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your username!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              label="Descripcion"
-              name="description"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your password!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item
-              label="Precio"
-              name="price"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your username!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              label="Categoría"
-              name="category"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your username!",
-                },
-              ]}
-            >
-              <Select options={categoryOptions} />
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Form.Item>
-          <Button shape="round" type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </Card>
+    <>
+      <StyledSteps
+        current={stepNumber}
+        items={[
+          {
+            title: "Detalles",
+          },
+          {
+            title: "Imagen",
+          },
+          {
+            title: "Complementos",
+          },
+        ]}
+      />
+      <Routes>
+        <Route path={"/step-1"} element={<DetailsProduct />} />
+        <Route path={"/step-2"} element={<ImagesProduct />} />
+        <Route path={"/step-3"} element={<ComplementsProduct />} />
+        <Route
+          path="/*"
+          element={<Navigate to="/administrator/products/new/step-1" />}
+        />
+      </Routes>
+    </>
   );
 };

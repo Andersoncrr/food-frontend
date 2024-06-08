@@ -8,7 +8,7 @@ type ThemeContextProps = {
   toggleTheme: () => Promise<void>;
   themeToggleButtonRef: React.RefObject<any>;
   theme: Theme;
-  themeSelect: "light-theme" | "dark-theme";
+  themeSelect: "light" | "dark";
 };
 
 const ThemeContext = createContext<ThemeContextProps | null>(null);

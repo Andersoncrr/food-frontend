@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getMenuProductsByIdUser } from "./actions/getMenuProductsByIdUser";
-import { createProductByIdUser } from "./actions/createMenuProductByIdUser";
+import { createMenuProductByIdUser } from "./actions/createMenuProductByIdUser";
 import { deleteMenuProductById } from "./actions/deleteMenuProductById";
 import { toast } from "react-toastify";
 import { getMenuProductById } from "./actions/getMenuProductById";
@@ -29,10 +29,10 @@ export const productsSlice = createSlice({
         state.products = action.payload;
         state.loading = false;
       })
-      .addCase(createProductByIdUser.pending, (state) => {
+      .addCase(createMenuProductByIdUser.pending, (state) => {
         state.loading = false;
       })
-      .addCase(createProductByIdUser.fulfilled, (state, action) => {
+      .addCase(createMenuProductByIdUser.fulfilled, (state, action) => {
         state.products.push(action.payload);
         state.loading = false;
         toast.success("¡Producto del menú creada con éxito!");

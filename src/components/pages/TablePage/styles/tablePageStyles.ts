@@ -1,7 +1,10 @@
+import { Flex } from "antd";
 import styled from "styled-components";
 
-export const StyledFlexContainer = styled.div`
-  margin-top: 50px;
+export const StyledFlexContainer = styled(Flex)`
   height: 100%;
-  position: relative;
+`;
+
+export const StyledFlexContainerTitle = styled(Flex)`
+  margin-bottom: 50px;
 `;

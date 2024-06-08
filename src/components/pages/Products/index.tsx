@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { getMenuProductsByIdUser } from "@/store/ProductsSlice/actions/getMenuProductsByIdUser";
+import { getMenuProductsByIdUser } from "@/store/ProductsSlice/actions";
 import { Button, Card, Table } from "antd";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ export const Products = () => {
           <Button
             type="primary"
             shape="round"
-            onClick={() => navigate("/administrator/create-product")}
+            onClick={() => navigate("/administrator/products/new/step-1")}
           >
             Crear Nuevo Producto
           </Button>

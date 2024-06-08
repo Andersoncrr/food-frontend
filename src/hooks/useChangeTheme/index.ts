@@ -1,10 +1,9 @@
+import { THEMES } from "@/const/themes";
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 export const useChangeTheme = () => {
-  const [theme, setTheme] = useState<"light-theme" | "dark-theme">(
-    "light-theme"
-  );
+  const [theme, setTheme] = useState<"light" | "dark">(THEMES.light);
   const themeToggleButtonRef = useRef<HTMLDivElement>(null);
 
   const toggleTheme = async () => {
@@ -19,7 +18,7 @@ export const useChangeTheme = () => {
     await document.startViewTransition(() => {
       flushSync(() => {
         setTheme((prevTheme) =>
-          prevTheme === "light-theme" ? "dark-theme" : "light-theme"
+          prevTheme === THEMES.light ? THEMES.dark : THEMES.light
         );
       });
     }).ready;

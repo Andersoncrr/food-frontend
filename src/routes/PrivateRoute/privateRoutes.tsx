@@ -39,7 +39,7 @@ export const privateRoutes: PrivateRoutes = [
     permissions: ["admin"],
   },
   {
-    path: "/create-product",
+    path: "/products/new/*",
     name: "Crear Producto",
     component: <CreateAndUpdateProductPage />,
     hidden: true,

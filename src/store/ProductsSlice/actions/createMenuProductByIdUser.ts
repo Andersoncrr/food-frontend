@@ -2,7 +2,7 @@ import { axiosApp } from "@/axios";
 import { RootState } from "@/types/redux";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const createProductByIdUser = createAsyncThunk(
+export const createMenuProductByIdUser = createAsyncThunk(
   "menuProduct/createProductByIdUser",
   async (product: any, { getState }) => {
     const {

@@ -45,7 +45,7 @@ export const CreateAndUpdateFormTable = ({ onSubmit, table }: Props) => {
           },
         ]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
       <Form.Item
         label="Capacidad"
@@ -57,7 +57,7 @@ export const CreateAndUpdateFormTable = ({ onSubmit, table }: Props) => {
           },
         ]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
 
       <Form.Item>

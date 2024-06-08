@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { getTablesByIdUser } from "@/store/TableSlice/actions/getTablesByIdUser";
-import { Button, Flex, Typography } from "antd";
+import { Button, Typography } from "antd";
 import { useEffect, useState } from "react";
 import Modal from "antd/es/modal/Modal";
 import { CardTable } from "./components/CardTable";
@@ -15,6 +15,10 @@ import ReactFlow, {
 } from "reactflow";
 
 import "reactflow/dist/style.css";
+import {
+  StyledFlexContainer,
+  StyledFlexContainerTitle,
+} from "./styles/tablePageStyles";
 
 const { Title } = Typography;
 
@@ -56,13 +60,13 @@ export const TablePage = () => {
   }, []);
 
   return (
-    <>
-      <Flex justify="space-between" align="center">
+    <StyledFlexContainer vertical>
+      <StyledFlexContainerTitle justify="space-between" align="center">
         <Title level={2}>Mesas</Title>
         <Button type="primary" shape="round" onClick={() => setOpenModal(true)}>
           Agregar Mesa
         </Button>
-      </Flex>
+      </StyledFlexContainerTitle>
       <ReactFlow
         nodes={nodes}
         onNodesChange={onNodesChange}
@@ -91,6 +95,6 @@ export const TablePage = () => {
       >
         <CreateAndUpdateFormTable onSubmit={() => setOpenModal(false)} />
       </Modal>
-    </>
+    </StyledFlexContainer>
   );
 };

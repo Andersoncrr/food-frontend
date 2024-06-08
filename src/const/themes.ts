@@ -1,5 +1,10 @@
 import { Theme } from "@/types/theme";
 
+export enum THEMES {
+  light = "light",
+  dark = "dark",
+}
+
 export const LIGHTTHEME: Theme = {
   primary: {
     100: "#8134fe",
@@ -33,6 +38,6 @@ export const DARKTHEME: Theme = {
 };
 
 export const THEMESELECT = {
-  "light-theme": LIGHTTHEME,
-  "dark-theme": DARKTHEME,
+  [THEMES.light]: LIGHTTHEME,
+  [THEMES.dark]: DARKTHEME,
 };
