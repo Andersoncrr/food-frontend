@@ -3,7 +3,7 @@ export type UserInfo = {
   name: string;
   lastName?: string;
   email: string;
-  permissions: Array<"admin">;
+  permissions: Array<"admin" | "products" | "category">;
 };
 
 export type InitialState = {
