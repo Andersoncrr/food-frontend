@@ -12,7 +12,9 @@ export const Employees = () => {
   const { employees } = useAppSelector((state) => state.employee);
 
   useEffect(() => {
-    dispatch(getEmployeesByIdUser());
+    if (employees.length === 0) {
+      dispatch(getEmployeesByIdUser());
+    }
   }, []);
 
   return (

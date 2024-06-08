@@ -29,7 +29,9 @@ export const TablePage = () => {
   const { tables } = useAppSelector((state) => state.table);
 
   useEffect(() => {
-    dispatch(getTablesByIdUser());
+    if (tables.length === 0) {
+      dispatch(getTablesByIdUser());
+    }
   }, []);
   useEffect(() => {
     if (tables) {
