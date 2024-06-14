@@ -4,6 +4,10 @@ import { AccountPage } from "./AccountPage";
 import { MenuCategories } from "./MenuCategories/index";
 import { TablePage } from "./TablePage";
 import { AuthEmployeePage } from "./AuthEmployeePage";
+import { BusinessHoursPage } from "@/pages/BusinessHoursPage";
+import { CreateAndUpdateProductPage } from "@/pages/CreateAndUpdateProductPage";
+import { Employees } from "@/pages/Employees";
+import { Products } from "@/pages/Products";
 
 export {
   AuthPage,
@@ -12,4 +16,8 @@ export {
   MenuCategories,
   TablePage,
   AuthEmployeePage,
+  BusinessHoursPage,
+  CreateAndUpdateProductPage,
+  Employees,
+  Products,
 };

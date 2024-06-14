@@ -25,9 +25,10 @@ export const SideBar = ({ collapsed }: Props) => {
   const getOptionsMenu = (privateRoutes: PrivateRoutes) => {
     const optionsMenu = privateRoutes.map((route) => {
       if (
-        !route.permissions?.some((permission) =>
-          userInfo.permissions.includes(permission)
-        ) ||
+        (route.permissions &&
+          !route.permissions?.some((permission) =>
+            userInfo.permissions.includes(permission)
+          )) ||
         route.hidden
       ) {
         return null;

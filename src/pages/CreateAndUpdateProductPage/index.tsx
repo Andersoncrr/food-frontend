@@ -55,8 +55,8 @@ export const CreateAndUpdateProductPage = () => {
       />
       <Routes>
         <Route path={"/step-1"} element={<DetailsProduct />} />
-        <Route path={"/step-2"} element={<ImagesProduct />} />
-        <Route path={"/step-3"} element={<ComplementsProduct />} />
+        <Route path={"/step-2/:idProduct"} element={<ImagesProduct />} />
+        <Route path={"/step-3/:idProduct"} element={<ComplementsProduct />} />
         <Route
           path="/*"
           element={<Navigate to="/administrator/products/new/step-1" />}

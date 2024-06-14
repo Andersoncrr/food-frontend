@@ -1,9 +1,12 @@
-import { AccountPage, MenuCategories, TablePage } from "@/components/pages";
-import { BusinessHoursPage } from "@/components/pages/BusinessHoursPage";
-import { CreateAndUpdateProductPage } from "@/components/pages/CreateAndUpdateProductPage";
-import { Employees } from "@/components/pages/Employees";
-import { Products } from "@/components/pages/Products";
-
+import {
+  AccountPage,
+  MenuCategories,
+  TablePage,
+  BusinessHoursPage,
+  CreateAndUpdateProductPage,
+  Employees,
+  Products,
+} from "@/pages";
 import { PrivateRoutes } from "@/types/routes";
 
 const menuRoutes: PrivateRoutes = [
@@ -53,13 +56,13 @@ export const privateRoutes: PrivateRoutes = [
     hidden: true,
     permissions: ["admin"],
   },
-  {
-    path: "/edit-product/:idMenuProduct",
-    name: "Editar Producto",
-    component: <CreateAndUpdateProductPage />,
-    hidden: true,
-    permissions: ["admin"],
-  },
+  // {
+  //   path: "/edit-product/:idMenuProduct",
+  //   name: "Editar Producto",
+  //   component: <CreateAndUpdateProductPage />,
+  //   hidden: true,
+  //   permissions: ["admin"],
+  // },
   {
     path: "/tables",
     name: "Mesas",

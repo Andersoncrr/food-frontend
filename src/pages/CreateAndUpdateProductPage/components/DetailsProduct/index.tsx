@@ -20,14 +20,17 @@ export const DetailsProduct = () => {
     label: option.name,
   }));
 
-  const onFinish = (values) => {
-    navigate("/administrator/products/new/step-2");
+  const onFinish = async (values) => {
     // if (idMenuProduct) {
     //   dispatch(updateMenuProductById({ _id: idMenuProduct, ...values }));
     // } else {
-    //   dispatch(createMenuProductByIdUser(values));
+    const response = await dispatch(createMenuProductByIdUser(values));
+    if (createMenuProductByIdUser.fulfilled.match(response)) {
+      const { payload } = response;
+      navigate(`/administrator/products/new/step-2/${payload._id}`);
+    }
+
     // }
-    // navigate("/administrator/products");
   };
 
   useEffect(() => {

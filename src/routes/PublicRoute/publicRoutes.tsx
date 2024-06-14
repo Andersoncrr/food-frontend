@@ -1,4 +1,4 @@
-import { AuthPage, CreateAccountPage } from "@/components/pages";
+import { AuthPage, CreateAccountPage } from "@/pages";
 
 import { PrivateRoutes } from "@/types/routes";
 
