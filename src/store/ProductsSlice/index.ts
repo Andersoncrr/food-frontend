@@ -9,7 +9,9 @@ import { updateMenuProductById } from "./actions/updateMenuProductById";
 const initialState = {
   loading: false,
   products: [],
-  product: null,
+  product: {
+    productImages: [],
+  },
 };
 
 export const productsSlice = createSlice({
@@ -18,6 +20,9 @@ export const productsSlice = createSlice({
   reducers: {
     resetProduct: (state) => {
       state.product = null;
+    },
+    updateProduct: (state, action) => {
+      state.product = action.payload;
     },
   },
   extraReducers(builder) {
@@ -34,6 +39,7 @@ export const productsSlice = createSlice({
       })
       .addCase(createMenuProductByIdUser.fulfilled, (state, action) => {
         state.products.push(action.payload);
+        state.product = action.payload;
         state.loading = false;
         toast.success("¡Producto del menú creada con éxito!");
       })
@@ -69,4 +75,4 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { resetProduct } = productsSlice.actions;
+export const { resetProduct, updateProduct } = productsSlice.actions;

@@ -1,3 +1,4 @@
+import { formatToColombianPesos } from "@/helpers/formatNumbers";
 import { ActionsTableProduct } from "../components/ActionsTableProduct";
 
 export const COLUMNS_PRODUCTS = [
@@ -12,6 +13,7 @@ export const COLUMNS_PRODUCTS = [
   {
     title: "Precio ",
     dataIndex: "price",
+    render: (price) => formatToColombianPesos(price),
   },
 
   {

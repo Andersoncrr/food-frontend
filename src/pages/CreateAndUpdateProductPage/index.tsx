@@ -9,6 +9,7 @@ import {
   Routes,
   useLocation,
   useParams,
+  useSearchParams,
 } from "react-router-dom";
 import { DetailsProduct } from "./components/DetailsProduct";
 import { StyledSteps } from "./styles/createAndUpdateProductPageStyles";
@@ -17,7 +18,8 @@ import { ComplementsProduct } from "./components/ComplementsProduct";
 
 export const CreateAndUpdateProductPage = () => {
   const dispatch = useAppDispatch();
-  const { idMenuProduct } = useParams();
+  const [searchParams] = useSearchParams();
+  const idMenuProduct = searchParams.get("idMenuProduct");
   const { pathname } = useLocation();
   const match = pathname.match(/\/step-(\d+)/);
   const stepNumber = match ? Number(match[1]) - 1 : 0;
@@ -55,8 +57,8 @@ export const CreateAndUpdateProductPage = () => {
       />
       <Routes>
         <Route path={"/step-1"} element={<DetailsProduct />} />
-        <Route path={"/step-2/:idProduct"} element={<ImagesProduct />} />
-        <Route path={"/step-3/:idProduct"} element={<ComplementsProduct />} />
+        <Route path={"/step-2"} element={<ImagesProduct />} />
+        <Route path={"/step-3"} element={<ComplementsProduct />} />
         <Route
           path="/*"
           element={<Navigate to="/administrator/products/new/step-1" />}

@@ -8,6 +8,7 @@ import { BusinessHoursPage } from "@/pages/BusinessHoursPage";
 import { CreateAndUpdateProductPage } from "@/pages/CreateAndUpdateProductPage";
 import { Employees } from "@/pages/Employees";
 import { Products } from "@/pages/Products";
+import { ToppingCategoryPage } from "./ToppingCategoryPage/index";
 
 export {
   AuthPage,
@@ -20,4 +21,5 @@ export {
   CreateAndUpdateProductPage,
   Employees,
   Products,
+  ToppingCategoryPage,
 };

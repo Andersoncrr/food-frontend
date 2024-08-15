@@ -1,18 +1,18 @@
+import { formatToColombianPesos } from "@/helpers/formatNumbers";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import {
   createMenuProductByIdUser,
   updateMenuProductById,
 } from "@/store/ProductsSlice/actions";
-import { Button, Card, Col, Form, Input, Row, Select } from "antd";
+import { Button, Card, Col, Form, Input, InputNumber, Row, Select } from "antd";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const DetailsProduct = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { menuCategories } = useAppSelector((state) => state.menuCategory);
   const { product } = useAppSelector((state) => state.product);
-  const { idMenuProduct } = useParams();
   const [form] = Form.useForm();
 
   const categoryOptions = menuCategories.map((option) => ({
@@ -27,7 +27,9 @@ export const DetailsProduct = () => {
     const response = await dispatch(createMenuProductByIdUser(values));
     if (createMenuProductByIdUser.fulfilled.match(response)) {
       const { payload } = response;
-      navigate(`/administrator/products/new/step-2/${payload._id}`);
+      navigate(
+        `/administrator/products/new/step-2?idMenuProduct=${payload._id}`
+      );
     }
 
     // }
@@ -84,7 +86,16 @@ export const DetailsProduct = () => {
                 },
               ]}
             >
-              <Input />
+              <InputNumber
+                style={{
+                  width: "100%",
+                }}
+                formatter={(currency: number) =>
+                  formatToColombianPesos(currency, "decimal")
+                }
+                parser={(value) => +value?.replace(/\$\s?|,|\./g, "")}
+                prefix="$"
+              />
             </Form.Item>
           </Col>
           <Col span={12}>

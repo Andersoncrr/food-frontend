@@ -6,8 +6,18 @@ import {
   CreateAndUpdateProductPage,
   Employees,
   Products,
+  ToppingCategoryPage,
 } from "@/pages";
 import { PrivateRoutes } from "@/types/routes";
+
+const toppingRoutes: PrivateRoutes = [
+  {
+    path: "/topping-category",
+    name: "Categorías",
+    component: <ToppingCategoryPage />,
+    permissions: ["admin", "toppingCategory"],
+  },
+];
 
 const menuRoutes: PrivateRoutes = [
   {
@@ -21,6 +31,11 @@ const menuRoutes: PrivateRoutes = [
     name: "Productos",
     permissions: ["admin", "products"],
     component: <Products />,
+  },
+  {
+    name: "Toppings",
+    permissions: ["admin", "toppingCategory"],
+    items: toppingRoutes,
   },
 ];
 const configurationRoutes: PrivateRoutes = [
